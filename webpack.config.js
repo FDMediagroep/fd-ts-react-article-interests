@@ -29,9 +29,11 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     externals: {
+        '@fdmg/fd-typography': '@fdmg/fd-typography',
         'react': 'react',
         'react-dom': 'react-dom',
-        'styled-components': 'styled-components'
+        'styled-components': 'styled-components',
+        'uniqid': 'uniqid'
     },
     plugins: [
         new webpack.DefinePlugin({

@@ -1,6 +1,6 @@
 {
   "name": "@fdmg/fd-article-interests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FD-themed article interests",
   "types": "dist/ArticleInterests.d.ts",
   "main": "dist/article-interests.js",
