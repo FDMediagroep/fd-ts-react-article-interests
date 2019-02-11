@@ -58,8 +58,8 @@ export default class ArticleInterests extends PureComponent<Props, any> {
                     </TypoGraphy>
                     <ul>
                         {
-                            this.props.interests.map((interest: Interest) => 
-                                (<li key={interest.uuid}>
+                            this.props.interests.map((interest: Interest) => (
+                                <li key={interest.uuid}>
                                     <div className={`interest-container${interest.selected ? ' selected' : ''}`}>
                                         <a href={`${interest.link ? interest.link : `/tag/${interest.tag}`}`} title={interest.tag}>{interest.tag}</a>
                                         <span className="interest-controls">
@@ -68,11 +68,12 @@ export default class ArticleInterests extends PureComponent<Props, any> {
                                                 <i className="active-icon icon-bell1" data-tag={interest.tag} onClick={this.onDisableAlertClick}/>
                                             </span>
                                             <button onClick={this.onFollowClick} data-tag={interest.tag} data-selected={interest.selected} data-addurl={interest.addInterestLink ? interest.addInterestLink : '/add-interest'} data-deleteurl={interest.deleteInterestLink ? interest.deleteInterestLink : '/delete-interest'}>
-                                                <span className="cross"></span> <span className="button-text default-text">{interest.buttonText ? interest.buttonText : 'Volg'}</span><span className="button-text active-text">{interest.buttonText ? interest.buttonText : 'Ontvolg'}</span>
+                                                <span className="cross"/> <span className="button-text default-text">{interest.buttonText ? interest.buttonText : 'Volg'}</span><span className="button-text active-text">{interest.buttonText ? interest.buttonText : 'Ontvolg'}</span>
                                             </button>
                                         </span>
                                     </div>
-                                </li>)
+                                </li>
+                                )
                             )
                         }
                     </ul>

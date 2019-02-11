@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleInterests renders correctly 1`] = `
+<section
+  className="fd-article-interests"
+>
+  <h3
+    className="fd-typography card-h fd-article-interests-h"
+    textStyle="card-h"
+  >
+    <a
+      href="https://fd.nl/mijn-nieuws"
+    >
+      Volgen via mijn nieuws
+    </a>
+  </h3>
+  <ul>
+    <li>
+      <div
+        className="interest-container"
+      >
+        <a
+          href="/tag/Detailhandel"
+          title="Detailhandel"
+        >
+          Detailhandel
+        </a>
+        <span
+          className="interest-controls"
+        >
+          <span
+            className="alert"
+            data-addurl="/add-alert"
+            data-deleteurl="/add-alert"
+          >
+            <i
+              className="default-icon icon-bell"
+              data-tag="Detailhandel"
+              onClick={[Function]}
+            />
+            <i
+              className="active-icon icon-bell1"
+              data-tag="Detailhandel"
+              onClick={[Function]}
+            />
+          </span>
+          <button
+            data-addurl="/add-interest"
+            data-deleteurl="/delete-interest"
+            data-tag="Detailhandel"
+            onClick={[Function]}
+          >
+            <span
+              className="cross"
+            />
+             
+            <span
+              className="button-text default-text"
+            >
+              Volg
+            </span>
+            <span
+              className="button-text active-text"
+            >
+              Ontvolg
+            </span>
+          </button>
+        </span>
+      </div>
+    </li>
+    <li>
+      <div
+        className="interest-container selected"
+      >
+        <a
+          href="/tag/Eten & Drinken"
+          title="Eten & Drinken"
+        >
+          Eten & Drinken
+        </a>
+        <span
+          className="interest-controls"
+        >
+          <span
+            className="alert"
+            data-addurl="/add-alert"
+            data-deleteurl="/add-alert"
+          >
+            <i
+              className="default-icon icon-bell"
+              data-tag="Eten & Drinken"
+              onClick={[Function]}
+            />
+            <i
+              className="active-icon icon-bell1"
+              data-tag="Eten & Drinken"
+              onClick={[Function]}
+            />
+          </span>
+          <button
+            data-addurl="/add-interest"
+            data-deleteurl="/delete-interest"
+            data-selected={true}
+            data-tag="Eten & Drinken"
+            onClick={[Function]}
+          >
+            <span
+              className="cross"
+            />
+             
+            <span
+              className="button-text default-text"
+            >
+              Volg
+            </span>
+            <span
+              className="button-text active-text"
+            >
+              Ontvolg
+            </span>
+          </button>
+        </span>
+      </div>
+    </li>
+    <li>
+      <div
+        className="interest-container selected"
+      >
+        <a
+          href="/tag/Supermarkt"
+          title="Supermarkt"
+        >
+          Supermarkt
+        </a>
+        <span
+          className="interest-controls"
+        >
+          <span
+            className="alert selected"
+            data-addurl="/add-alert"
+            data-deleteurl="/add-alert"
+          >
+            <i
+              className="default-icon icon-bell"
+              data-tag="Supermarkt"
+              onClick={[Function]}
+            />
+            <i
+              className="active-icon icon-bell1"
+              data-tag="Supermarkt"
+              onClick={[Function]}
+            />
+          </span>
+          <button
+            data-addurl="/add-interest"
+            data-deleteurl="/delete-interest"
+            data-selected={true}
+            data-tag="Supermarkt"
+            onClick={[Function]}
+          >
+            <span
+              className="cross"
+            />
+             
+            <span
+              className="button-text default-text"
+            >
+              Volg
+            </span>
+            <span
+              className="button-text active-text"
+            >
+              Ontvolg
+            </span>
+          </button>
+        </span>
+      </div>
+    </li>
+  </ul>
+</section>
+`;
