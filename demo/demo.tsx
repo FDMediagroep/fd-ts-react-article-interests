@@ -2,6 +2,16 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import ArticleInterests from '../src/ArticleInterests';
 import uniqid from 'uniqid';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+    .content-area {
+        padding: 1rem 0;
+        &.persoonlijk {
+            background-color: white;
+        }
+    }
+`;
 
 class App extends PureComponent<any, any> {
     state: any = {
@@ -63,7 +73,9 @@ class App extends PureComponent<any, any> {
     render() {
         return(
             <>
+                <GlobalStyle/>
                 <ArticleInterests
+                    cardStyle={this.props.cardStyle}
                     onDisableAlertClick={this.onDisableAlertClick}
                     onEnableAlertClick={this.onEnableAlertClick}
                     onFollowClick={this.onFollowClick}
@@ -79,8 +91,15 @@ class App extends PureComponent<any, any> {
 
 ReactDOM.render(<>
     <div>
-        <App/>
+        <App cardStyle="article"/>
     </div>
 </>,
-document.getElementById('root'));
+document.querySelector('.article aside'));
+
+ReactDOM.render(<>
+    <div>
+        <App cardStyle="persoonlijk"/>
+    </div>
+</>,
+document.querySelector('.persoonlijk aside'));
 

@@ -1,6 +1,6 @@
 {
   "name": "@fdmg/fd-article-interests",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "FD-themed article interests",
   "types": "dist/ArticleInterests.d.ts",
   "main": "dist/article-interests.js",
@@ -38,6 +38,7 @@
   "author": "Willem Liu",
   "license": "ISC",
   "devDependencies": {
+    "@fdmg/fd-card": "^1.0.8",
     "@types/jest": "^24.0.4",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.1",

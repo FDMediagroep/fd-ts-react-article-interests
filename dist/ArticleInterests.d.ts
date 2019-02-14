@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { CardTypes } from '@fdmg/fd-card';
 interface Interest {
     activeButtonText?: string;
     alertSelected?: boolean;
@@ -13,6 +14,7 @@ interface Interest {
     uuid: string;
 }
 export interface Props {
+    cardStyle: CardTypes;
     className?: string;
     onDisableAlertClick: (tag: string) => void;
     onEnableAlertClick: (tag: string) => void;

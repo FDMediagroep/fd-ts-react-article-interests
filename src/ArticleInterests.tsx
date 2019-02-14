@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { createGlobalStyle } from "styled-components";
 import TypoGraphy, { getAllTextStyles } from "@fdmg/fd-typography";
+import Card, {CardTypes, CardStyle} from '@fdmg/fd-card';
 
 interface Interest {
     activeButtonText?: string;
@@ -17,6 +18,7 @@ interface Interest {
 }
 
 export interface Props {
+    cardStyle: CardTypes;
     className?: string;
     onDisableAlertClick: (tag: string) => void;
     onEnableAlertClick: (tag: string) => void;
@@ -52,7 +54,7 @@ export default class ArticleInterests extends PureComponent<Props, any> {
         return(
             <>
                 <GlobalStyle/>
-                <section className={`fd-article-interests${this.props.className ? ` ${this.props.className}` : ''}`}>
+                <Card cardStyle={this.props.cardStyle} className={`fd-article-interests${this.props.className ? ` ${this.props.className}` : ''}`}>
                     <TypoGraphy className="fd-article-interests-h" textStyle="card-h">
                         <h3><a href={`${this.props.titleLink ? this.props.titleLink : '/mijn-nieuws'}`}>{this.props.title ? this.props.title : 'Volgen via mijn nieuws'}</a></h3>
                     </TypoGraphy>
@@ -77,7 +79,7 @@ export default class ArticleInterests extends PureComponent<Props, any> {
                             )
                         }
                     </ul>
-                </section>
+                </Card>
             </>
         );
     }
@@ -85,7 +87,6 @@ export default class ArticleInterests extends PureComponent<Props, any> {
 
 const GlobalStyle = createGlobalStyle`
 .fd-article-interests {
-    background: rgba(0, 0, 0, 0.04);
     padding: 15px 15px 0 15px;
     h3.fd-article-interests-h {
         min-height: 20px;
@@ -94,6 +95,9 @@ const GlobalStyle = createGlobalStyle`
     h3.fd-article-interests-h a {
         color: inherit;
         text-decoration: inherit;
+    }
+    &.persoonlijk h3.fd-article-interests-h {
+        color: #e57e30;
     }
 
     ul {
@@ -252,6 +256,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const ArticleInterestsStyle = createGlobalStyle`
+${(CardStyle as any).globalStyle.rules}
 ${getAllTextStyles(['card-h']).globalStyle.rules}
 ${(GlobalStyle as any).globalStyle.rules}
 `;
