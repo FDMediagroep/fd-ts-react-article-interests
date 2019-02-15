@@ -172,16 +172,6 @@ const GlobalStyle = createGlobalStyle`
             display: inline;
         }
     }
-
-    &.persoonlijk {
-        h3 {
-            color: #e57e30;
-        }
-
-        .interest-container a:hover {
-            color: #e57e30;
-        }
-    }
 }
 `;
 
