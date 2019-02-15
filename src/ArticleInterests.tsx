@@ -96,9 +96,6 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
         text-decoration: inherit;
     }
-    &.persoonlijk h3.fd-article-interests-h {
-        color: #e57e30;
-    }
 
     ul {
         padding: 0;
