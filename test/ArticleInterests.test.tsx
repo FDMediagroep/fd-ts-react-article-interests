@@ -24,6 +24,19 @@ const interests = [{
 describe('ArticleInterests', () => {
     test('renders correctly', () => {
         let articleInterests = TestRenderer.create(<ArticleInterests
+            cardStyle="article"
+            onDisableAlertClick={onDisableAlertClick}
+            onEnableAlertClick={onEnableAlertClick}
+            onFollowClick={onFollowClick}
+            onUnfollowClick={onUnfollowClick}
+            title="Volgen via mijn nieuws"
+            titleLink="https://fd.nl/mijn-nieuws"
+            interests={interests}
+        />);
+        expect(articleInterests.toJSON()).toMatchSnapshot();
+
+        articleInterests = TestRenderer.create(<ArticleInterests
+            cardStyle="persoonlijk"
             onDisableAlertClick={onDisableAlertClick}
             onEnableAlertClick={onEnableAlertClick}
             onFollowClick={onFollowClick}

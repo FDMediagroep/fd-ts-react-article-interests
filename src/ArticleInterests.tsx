@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import { createGlobalStyle } from "styled-components";
 import TypoGraphy, { getAllTextStyles } from "@fdmg/fd-typography";
+import Card, {CardTypes, CardStyle} from '@fdmg/fd-card';
+import {FollowButton, FollowButtonStyle} from '@fdmg/fd-buttons';
 
 interface Interest {
     activeButtonText?: string;
@@ -17,6 +19,7 @@ interface Interest {
 }
 
 export interface Props {
+    cardStyle: CardTypes;
     className?: string;
     onDisableAlertClick: (tag: string) => void;
     onEnableAlertClick: (tag: string) => void;
@@ -52,7 +55,7 @@ export default class ArticleInterests extends PureComponent<Props, any> {
         return(
             <>
                 <GlobalStyle/>
-                <section className={`fd-article-interests${this.props.className ? ` ${this.props.className}` : ''}`}>
+                <Card cardStyle={this.props.cardStyle} className={`fd-article-interests${this.props.className ? ` ${this.props.className}` : ''}`}>
                     <TypoGraphy className="fd-article-interests-h" textStyle="card-h">
                         <h3><a href={`${this.props.titleLink ? this.props.titleLink : '/mijn-nieuws'}`}>{this.props.title ? this.props.title : 'Volgen via mijn nieuws'}</a></h3>
                     </TypoGraphy>
@@ -67,9 +70,16 @@ export default class ArticleInterests extends PureComponent<Props, any> {
                                                 <i className="default-icon icon-bell" data-tag={interest.tag} onClick={this.onEnableAlertClick}/>
                                                 <i className="active-icon icon-bell1" data-tag={interest.tag} onClick={this.onDisableAlertClick}/>
                                             </span>
-                                            <button onClick={this.onFollowClick} data-tag={interest.tag} data-selected={interest.selected} data-addurl={interest.addInterestLink ? interest.addInterestLink : '/add-interest'} data-deleteurl={interest.deleteInterestLink ? interest.deleteInterestLink : '/delete-interest'}>
-                                                <span className="cross"/> <span className="button-text default-text">{interest.buttonText ? interest.buttonText : 'Volg'}</span><span className="button-text active-text">{interest.buttonText ? interest.buttonText : 'Ontvolg'}</span>
-                                            </button>
+                                            <FollowButton
+                                                buttonStyle={this.props.cardStyle === 'persoonlijk' ? this.props.cardStyle : 'default'}
+                                                onClick={this.onFollowClick}
+                                                tag={interest.tag}
+                                                selected={interest.selected}
+                                                followLink={interest.addInterestLink}
+                                                unFollowLink={interest.deleteInterestLink}
+                                                followButtonText={interest.buttonText}
+                                                unFollowButtonText={interest.activeButtonText}
+                                            />
                                         </span>
                                     </div>
                                 </li>
@@ -77,7 +87,7 @@ export default class ArticleInterests extends PureComponent<Props, any> {
                             )
                         }
                     </ul>
-                </section>
+                </Card>
             </>
         );
     }
@@ -85,7 +95,6 @@ export default class ArticleInterests extends PureComponent<Props, any> {
 
 const GlobalStyle = createGlobalStyle`
 .fd-article-interests {
-    background: rgba(0, 0, 0, 0.04);
     padding: 15px 15px 0 15px;
     h3.fd-article-interests-h {
         min-height: 20px;
@@ -147,67 +156,10 @@ const GlobalStyle = createGlobalStyle`
                 cursor: pointer;
             }
         }
-
-        .cross {
-            &:before {
-                content: '+';
-                display: block;
-                width: 10px;
-                height: 10px;
-                line-height: 10px;
-            }
-            display: inline-block;
-            transform: rotate(0deg);
-            transition: transform .5s;
-            transform-origin: center center;
-            font-size: 20px;
-            position: relative;
-            top: 2px;
-        }
-
-        .button-text {
-            margin-left: 5px;
-        }
-
-        .active-text {
-            display: none;
-        }
-
-        button {
-            outline: none;
-            border-radius: 2px;
-            white-space: nowrap;
-            float: right;
-            padding: 5px 10px;
-            border: 1px solid #49a4a2;
-            color: #49a4a2;
-            background-color: transparent;
-            cursor: pointer;
-            transition: color .2s;
-            font-family: 'ProximaNovaRegular', sans-serif;
-            &:hover {
-                background-color: #49a4a2;
-                color: #ffeadb;
-            }
-        }
     }
 
     .interest-container.selected {
-        .interest-controls {
-            .cross {
-                transform: rotate(45deg);
-            }
-        }
-
-        button {
-            background-color: #49a4a2;
-            color: #ffeadb;
-        }
-        button .default-text {
-            display: none;
-        }
-        .default-icon,
-        button .active-text {
+        .default-icon {
             display: inline;
         }
     }
@@ -220,38 +172,12 @@ const GlobalStyle = createGlobalStyle`
             display: inline;
         }
     }
-
-    &.persoonlijk {
-        h3 {
-            color: #e57e30;
-        }
-
-        .cross,
-        .button-text {
-            color: black;
-        }
-
-        button:hover {
-            .cross,
-            .button-text {
-                color: white;
-            }
-        }
-
-        .interest-container a:hover {
-            color: #e57e30;
-        }
-
-        .interest-container.selected {
-            .button-text, .cross {
-                color: #ffffff;
-            }
-        }
-    }
 }
 `;
 
 export const ArticleInterestsStyle = createGlobalStyle`
+${(CardStyle as any).globalStyle.rules}
 ${getAllTextStyles(['card-h']).globalStyle.rules}
+${(FollowButtonStyle as any).globalStyle.rules}
 ${(GlobalStyle as any).globalStyle.rules}
 `;
