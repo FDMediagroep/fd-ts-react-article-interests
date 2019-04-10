@@ -1,6 +1,6 @@
 {
   "name": "@fdmg/fd-article-interests",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "FD-themed article interests",
   "types": "dist/ArticleInterests.d.ts",
   "main": "dist/article-interests.js",
@@ -57,7 +57,7 @@
     "ts-jest": "^24.0.2",
     "tslint": "^5.15.0",
     "tslint-react": "^4.0.0",
-    "typescript": "^3.4.2",
+    "typescript": "^3.4.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
