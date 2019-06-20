@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { createGlobalStyle, css } from "styled-components";
 import TypoGraphy, { getAllTextStyles } from "@fdmg/fd-typography";
 import Card, {CardTypes, CardStyle} from '@fdmg/fd-card';
@@ -30,67 +30,65 @@ export interface Props {
     titleLink?: string;
 }
 
-export default class ArticleInterests extends PureComponent<Props, any> {
+export default function ArticleInterests(props: Props) {
 
-    onFollowClick: React.ReactEventHandler<HTMLButtonElement> = (e) => {
+    const onFollowClick: React.ReactEventHandler<HTMLButtonElement> = (e) => {
         const currentTarget = e.currentTarget;
         if (currentTarget.getAttribute('data-selected') === 'true') {
-            this.props.onUnfollowClick(currentTarget.getAttribute('data-tag') as string);
+            props.onUnfollowClick(currentTarget.getAttribute('data-tag') as string);
         } else {
-            this.props.onFollowClick(currentTarget.getAttribute('data-tag') as string);
+            props.onFollowClick(currentTarget.getAttribute('data-tag') as string);
         }
-    }
+    };
 
-    onEnableAlertClick: React.ReactEventHandler<HTMLElement> = (e) => {
+    const onEnableAlertClick: React.ReactEventHandler<HTMLElement> = (e) => {
         const currentTarget = e.currentTarget;
-        this.props.onEnableAlertClick(currentTarget.getAttribute('data-tag') as string);
-    }
+        props.onEnableAlertClick(currentTarget.getAttribute('data-tag') as string);
+    };
 
-    onDisableAlertClick: React.ReactEventHandler<HTMLElement> = (e) => {
+    const onDisableAlertClick: React.ReactEventHandler<HTMLElement> = (e) => {
         const currentTarget = e.currentTarget;
-        this.props.onDisableAlertClick(currentTarget.getAttribute('data-tag') as string);
-    }
+        props.onDisableAlertClick(currentTarget.getAttribute('data-tag') as string);
+    };
 
-    render() {
-        return(
-            <>
-                <GlobalStyle/>
-                <Card cardStyle={this.props.cardStyle} className={`fd-article-interests${this.props.className ? ` ${this.props.className}` : ''}`}>
-                    <TypoGraphy className="fd-article-interests-h" textStyle="card-h">
-                        <h3><a href={`${this.props.titleLink ? this.props.titleLink : '/mijn-nieuws'}`}>{this.props.title ? this.props.title : 'Volgen via mijn nieuws'}</a></h3>
-                    </TypoGraphy>
-                    <ul>
-                        {
-                            this.props.interests.map((interest: Interest) => (
-                                <li key={interest.uuid}>
-                                    <div className={`interest-container${interest.selected ? ' selected' : ''}`}>
-                                        <a href={`${interest.link ? interest.link : `/tag/${interest.tag}`}`} title={interest.tag}>{interest.tag}</a>
-                                        <span className="interest-controls">
-                                            <span className={`alert${interest.alertSelected ? ' selected' : ''}`} data-addurl={interest.addAlertLink ? interest.addAlertLink : '/add-alert'} data-deleteurl={interest.addAlertLink ? interest.addAlertLink : '/add-alert'}>
-                                                <i className="default-icon icon-bell" data-tag={interest.tag} onClick={this.onEnableAlertClick}/>
-                                                <i className="active-icon icon-bell1" data-tag={interest.tag} onClick={this.onDisableAlertClick}/>
-                                            </span>
-                                            <FollowButton
-                                                buttonStyle={this.props.cardStyle === 'persoonlijk' ? this.props.cardStyle : 'default'}
-                                                onClick={this.onFollowClick}
-                                                tag={interest.tag}
-                                                selected={interest.selected}
-                                                followLink={interest.addInterestLink}
-                                                unFollowLink={interest.deleteInterestLink}
-                                                followButtonText={interest.buttonText}
-                                                unFollowButtonText={interest.activeButtonText}
-                                            />
+    return(
+        <>
+            <GlobalStyle/>
+            <Card cardStyle={props.cardStyle} className={`fd-article-interests${props.className ? ` ${props.className}` : ''}`}>
+                <TypoGraphy className="fd-article-interests-h" textStyle="card-h">
+                    <h3><a href={`${props.titleLink ? props.titleLink : '/mijn-nieuws'}`}>{props.title ? props.title : 'Volgen via mijn nieuws'}</a></h3>
+                </TypoGraphy>
+                <ul>
+                    {
+                        props.interests.map((interest: Interest) => (
+                            <li key={interest.uuid}>
+                                <div className={`interest-container${interest.selected ? ' selected' : ''}`}>
+                                    <a href={`${interest.link ? interest.link : `/tag/${interest.tag}`}`} title={interest.tag}>{interest.tag}</a>
+                                    <span className="interest-controls">
+                                        <span className={`alert${interest.alertSelected ? ' selected' : ''}`} data-addurl={interest.addAlertLink ? interest.addAlertLink : '/add-alert'} data-deleteurl={interest.addAlertLink ? interest.addAlertLink : '/add-alert'}>
+                                            <i className="default-icon icon-bell" data-tag={interest.tag} onClick={onEnableAlertClick}/>
+                                            <i className="active-icon icon-bell1" data-tag={interest.tag} onClick={onDisableAlertClick}/>
                                         </span>
-                                    </div>
-                                </li>
-                                )
+                                        <FollowButton
+                                            buttonStyle={props.cardStyle === 'persoonlijk' ? props.cardStyle : 'default'}
+                                            onClick={onFollowClick}
+                                            tag={interest.tag}
+                                            selected={interest.selected}
+                                            followLink={interest.addInterestLink}
+                                            unFollowLink={interest.deleteInterestLink}
+                                            followButtonText={interest.buttonText}
+                                            unFollowButtonText={interest.activeButtonText}
+                                        />
+                                    </span>
+                                </div>
+                            </li>
                             )
-                        }
-                    </ul>
-                </Card>
-            </>
-        );
-    }
+                        )
+                    }
+                </ul>
+            </Card>
+        </>
+    );
 }
 
 const styles = css`

@@ -1,4 +1,3 @@
-import React, { PureComponent } from "react";
 import { CardTypes } from '@fdmg/fd-card';
 interface Interest {
     activeButtonText?: string;
@@ -24,11 +23,6 @@ export interface Props {
     title?: string;
     titleLink?: string;
 }
-export default class ArticleInterests extends PureComponent<Props, any> {
-    onFollowClick: React.ReactEventHandler<HTMLButtonElement>;
-    onEnableAlertClick: React.ReactEventHandler<HTMLElement>;
-    onDisableAlertClick: React.ReactEventHandler<HTMLElement>;
-    render(): JSX.Element;
-}
+export default function ArticleInterests(props: Props): JSX.Element;
 export declare const ArticleInterestsStyle: import("styled-components").FlattenSimpleInterpolation;
 export {};
