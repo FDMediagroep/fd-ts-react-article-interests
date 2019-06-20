@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import TypoGraphy, { getAllTextStyles } from "@fdmg/fd-typography";
 import Card, {CardTypes, CardStyle} from '@fdmg/fd-card';
 import {FollowButton, FollowButtonStyle} from '@fdmg/fd-buttons';
@@ -93,7 +93,7 @@ export default class ArticleInterests extends PureComponent<Props, any> {
     }
 }
 
-const GlobalStyle = createGlobalStyle`
+const styles = css`
 .fd-article-interests {
     padding: 15px 15px 0 15px;
     h3.fd-article-interests-h {
@@ -175,9 +175,11 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
+const GlobalStyle = createGlobalStyle`${styles}`;
+
 export const ArticleInterestsStyle = createGlobalStyle`
-${(CardStyle as any).globalStyle.rules}
-${getAllTextStyles(['card-h']).globalStyle.rules}
-${(FollowButtonStyle as any).globalStyle.rules}
-${(GlobalStyle as any).globalStyle.rules}
+${CardStyle}
+${getAllTextStyles(['card-h'])}
+${FollowButtonStyle}
+${styles}
 `;
