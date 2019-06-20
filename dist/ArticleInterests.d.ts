@@ -30,5 +30,5 @@ export default class ArticleInterests extends PureComponent<Props, any> {
     onDisableAlertClick: React.ReactEventHandler<HTMLElement>;
     render(): JSX.Element;
 }
-export declare const ArticleInterestsStyle: import("styled-components").GlobalStyleComponent<{}, import("styled-components").DefaultTheme>;
+export declare const ArticleInterestsStyle: import("styled-components").FlattenSimpleInterpolation;
 export {};

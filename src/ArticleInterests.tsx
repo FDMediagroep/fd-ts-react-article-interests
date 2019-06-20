@@ -175,11 +175,11 @@ const styles = css`
 }
 `;
 
-const GlobalStyle = createGlobalStyle`${styles}`;
-
-export const ArticleInterestsStyle = createGlobalStyle`
+export const ArticleInterestsStyle = css`
 ${CardStyle}
 ${getAllTextStyles(['card-h'])}
 ${FollowButtonStyle}
 ${styles}
 `;
+
+const GlobalStyle = createGlobalStyle`${ArticleInterestsStyle}`;
